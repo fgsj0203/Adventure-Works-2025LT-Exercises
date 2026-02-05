@@ -20,3 +20,11 @@ SELECT p.[Name] as Produto,
 FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
 GROUP BY p.[Name]
 ORDER BY Margem_Lucro DESC
+
+-- Exercise 03: Ticket Medio por Cliente - Qual o valor medio gasto por pedido para cada cliente?
+SELECT c.CustomerID as ID_Cliente,
+       AVG(soh.TotalDue) as Media_Total_Gasto
+FROM SalesLT.SalesOrderHeader as soh INNER JOIN SalesLT.SalesOrderDetail as sod ON soh.SalesOrderID = sod.SalesOrderID
+     INNER JOIN SalesLT.Customer as c ON c.CustomerID = soh.CustomerID
+GROUP BY c.CustomerID
+ORDER BY Media_Total_Gasto DESC
