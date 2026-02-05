@@ -47,3 +47,11 @@ SELECT MAX (sod.LineTotal) as Faturamento_Total,
        MONTH(soh.OrderDate) as Mes_Faturamento
 FROM SalesLT.SalesOrderDetail as sod INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
 GROUP BY (soh.OrderDate)
+
+-- Exercise 07: Pedidos de Alto Valor - Liste todos os pedidos cujo TotalDue seja superior a $10.000,00.
+SELECT soh.CustomerID as ID_Cliente,
+       soh.SalesOrderID as Ordem_Pedido_ID,
+       soh.TotalDue as Total_Devido
+FROM SalesLT.SalesOrderHeader as soh
+WHERE soh.TotalDue > 10000
+ORDER BY soh.TotalDue DESC
