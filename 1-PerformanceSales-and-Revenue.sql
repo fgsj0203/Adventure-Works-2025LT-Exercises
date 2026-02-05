@@ -36,3 +36,7 @@ FROM SalesLT.[Product] as p INNER JOIN SalesLT.[ProductCategory] as pc ON p.Prod
      INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
 GROUP BY pc.[Name]
 ORDER BY Total_Vendido_Produto DESC
+
+-- Exercise 05: Impacto dos Descontos: Qual foi o valor total (em dolares) que a empresa deixou de ganhar devido aos descontos (UnitPriceDiscount) aplicados?
+SELECT SUM (sod.UnitPriceDiscount) as Total_Desconto_Somados
+FROM SalesLT.SalesOrderDetail as sod
