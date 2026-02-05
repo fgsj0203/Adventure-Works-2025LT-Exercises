@@ -1,0 +1,13 @@
+/*
+Author: Francisco Gomes da Silva Junior
+College: Estacio de Sa
+Description: Performance of sales and revenue company
+Date: 04-02-2026, in format Brazil
+Version: 1.0
+*/
+
+-- Exercise 01: Ranking de Faturamento: Liste os 10 produtos que mais geraram receita total (SubTotal). / Ranking of invoicing: return 10 products of generate bigger revenue (SubTotal)
+SELECT TOP 10 p.[Name]
+FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
+     INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
+ORDER BY soh.SubTotal DESC
