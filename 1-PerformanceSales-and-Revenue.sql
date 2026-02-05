@@ -55,3 +55,11 @@ SELECT soh.CustomerID as ID_Cliente,
 FROM SalesLT.SalesOrderHeader as soh
 WHERE soh.TotalDue > 10000
 ORDER BY soh.TotalDue DESC
+
+-- Exercise 08: Markup Medio - Calcule a media de lucro percentual (Markup) por categoria de produto.
+SELECT pc.[Name] as Nome_Categoria,
+       AVG(p.ListPrice) as Media_Preco,
+       SUM((p.ListPrice * sod.OrderQty) - sod.LineTotal) as Lucro_liquido
+FROM SalesLT.[Product] as p INNER JOIN SalesLT.[ProductCategory] as pc ON p.ProductCategoryID = pc.ProductCategoryID
+     INNER JOIN SalesLT.SalesOrderDetail as sod ON sod.ProductID = p.ProductID
+GROUP BY pc.[Name]
