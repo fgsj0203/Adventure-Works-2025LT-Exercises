@@ -11,3 +11,12 @@ SELECT TOP 10 p.[Name]
 FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
      INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
 ORDER BY soh.SubTotal DESC
+
+-- Exercise 02: Margem de Lucro por Produto: Calcule a margem de lucro de cada produto vendido (UnitPrice - StandardCost) e ordene pelos mais lucrativos.
+SELECT p.[Name] as Produto,
+       SUM(sod.OrderQty) as Quantidade_Total_Vendida,
+       SUM(sod.LineTotal) as Faturamento_Total,
+       SUM(p.StandardCost - sod.UnitPrice) as Margem_Lucro
+FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
+GROUP BY p.[Name]
+ORDER BY Margem_Lucro DESC
