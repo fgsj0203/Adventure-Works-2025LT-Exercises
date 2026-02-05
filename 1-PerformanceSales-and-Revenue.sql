@@ -28,3 +28,11 @@ FROM SalesLT.SalesOrderHeader as soh INNER JOIN SalesLT.SalesOrderDetail as sod 
      INNER JOIN SalesLT.Customer as c ON c.CustomerID = soh.CustomerID
 GROUP BY c.CustomerID
 ORDER BY Media_Total_Gasto DESC
+
+-- Exercise 04: Vendas por Categoria: Mostre o total vendido agrupado por categoria de produto.
+SELECT pc.[Name] as Nome_Categoria_Produto, 
+       SUM(sod.LineTotal) as Total_Vendido_Produto
+FROM SalesLT.[Product] as p INNER JOIN SalesLT.[ProductCategory] as pc ON p.ProductCategoryID = pc.ProductCategoryID
+     INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
+GROUP BY pc.[Name]
+ORDER BY Total_Vendido_Produto DESC
