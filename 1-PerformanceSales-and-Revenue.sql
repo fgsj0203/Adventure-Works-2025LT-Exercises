@@ -40,3 +40,10 @@ ORDER BY Total_Vendido_Produto DESC
 -- Exercise 05: Impacto dos Descontos: Qual foi o valor total (em dolares) que a empresa deixou de ganhar devido aos descontos (UnitPriceDiscount) aplicados?
 SELECT SUM (sod.UnitPriceDiscount) as Total_Desconto_Somados
 FROM SalesLT.SalesOrderDetail as sod
+
+-- Exercise 06: Sazonalidade Mensal - Agrupe o faturamento total por ano e mes para identificar os melhores periodos de venda.
+SELECT MAX (sod.LineTotal) as Faturamento_Total,
+       YEAR(soh.OrderDate) as Ano_Faturamento,
+       MONTH(soh.OrderDate) as Mes_Faturamento
+FROM SalesLT.SalesOrderDetail as sod INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
+GROUP BY (soh.OrderDate)
