@@ -26,3 +26,8 @@ HAVING COUNT(soh.SalesOrderID) > 3
 SELECT c.[FirstName] as Primeiro_Nome, soh.SubTotal as Total_Pedido
 FROM SalesLT.Customer as c INNER JOIN SalesLT.SalesOrderHeader as soh ON c.CustomerID = soh.CustomerID
 WHERE soh.SubTotal > 5000
+
+-- Exercise 05: Identifique clientes que entregam pedidos em cidades diferentes do seu endereco de cobranca.
+SELECT c.FirstName as Primeiro_Nome, c.LastName as Ultimo_Nome
+FROM SalesLT.SalesOrderHeader as soh INNER JOIN SalesLT.Customer as c ON soh.CustomerID = c.CustomerID
+WHERE soh.BillToAddressID <> soh.ShipToAddressID
