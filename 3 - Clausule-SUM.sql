@@ -18,3 +18,8 @@ FROM SalesLT.[Product] as p
 -- Exercise 03: Some o valor total de todas as vendas realizadas na tabela SalesOrderHeader.
 SELECT SUM(soh.TotalDue) as Total_Final
 FROM SalesLT.SalesOrderHeader as soh
+
+-- Exercise 04: Calcule a soma do frete pago em todos os pedidos.
+SELECT SUM(soh.Freight) as Valor_Total_Frete
+FROM SalesLT.SalesOrderHeader as soh
+
