@@ -31,3 +31,4 @@ WHERE soh.SubTotal > 5000
 SELECT c.FirstName as Primeiro_Nome, c.LastName as Ultimo_Nome
 FROM SalesLT.SalesOrderHeader as soh INNER JOIN SalesLT.Customer as c ON soh.CustomerID = c.CustomerID
 WHERE soh.BillToAddressID <> soh.ShipToAddressID
+
