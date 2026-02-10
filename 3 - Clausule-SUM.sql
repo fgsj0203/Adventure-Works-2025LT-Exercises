@@ -26,3 +26,8 @@ FROM SalesLT.SalesOrderHeader as soh
 -- Exercise 05: Some a quantidade total de produtos vendidos na tabela SalesOrderDetail.
 SELECT SUM(sod.OrderQty) as Quantidade_Produto
 FROM SalesLT.SalesOrderDetail as sod
+
+-- Exercise 06: Calcule o valor total devido (TotalDue) de todos os pedidos pendentes.
+SELECT SUM(soh.TotalDue) as Total_Devido
+FROM SalesLT.SalesOrderHeader as soh
+		
