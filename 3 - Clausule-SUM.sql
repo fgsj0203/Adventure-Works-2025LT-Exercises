@@ -23,3 +23,6 @@ FROM SalesLT.SalesOrderHeader as soh
 SELECT SUM(soh.Freight) as Valor_Total_Frete
 FROM SalesLT.SalesOrderHeader as soh
 
+-- Exercise 05: Some a quantidade total de produtos vendidos na tabela SalesOrderDetail.
+SELECT SUM(sod.OrderQty) as Quantidade_Produto
+FROM SalesLT.SalesOrderDetail as sod
