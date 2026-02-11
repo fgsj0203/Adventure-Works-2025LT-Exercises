@@ -46,3 +46,8 @@ SELECT SUM(sod.LineTotal) as Total_Vendas, YEAR(soh.OrderDate) as Ano_Venda
 FROM SalesLT.SalesOrderDetail as sod INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
 GROUP BY soh.OrderDate
 ORDER BY soh.OrderDate DESC
+
+-- Exercise 09: Some o valor total dos produtos que possuem a cor 'Black'.
+SELECT SUM(p.ListPrice) as Preco_Final
+FROM SalesLT.[Product] as p
+WHERE p.Color = 'Black'
