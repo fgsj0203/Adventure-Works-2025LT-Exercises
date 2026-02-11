@@ -34,3 +34,9 @@ FROM SalesLT.SalesOrderHeader as soh
 -- Exercise 07: Some o valor total de desconto aplicado em todos os itens de pedidos.
 SELECT SUM(sod.UnitPriceDiscount) as Desconto_Preco_Total
 FROM SalesLT.SalesOrderDetail as sod
+
+-- Exercise 08: Calcule a soma do valor de venda (LineTotal) por categoria de produto.
+SELECT SUM(sod.LineTotal) as Total_Venda, pc.[Name] as Nome_Categoria
+FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
+     INNER JOIN SalesLT.ProductCategory as pc ON p.ProductCategoryID = pc.ProductCategoryID
+GROUP BY pc.[Name]
