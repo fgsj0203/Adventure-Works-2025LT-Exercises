@@ -31,3 +31,6 @@ FROM SalesLT.SalesOrderDetail as sod
 SELECT SUM(soh.TotalDue) as Total_Devido
 FROM SalesLT.SalesOrderHeader as soh
 		
+-- Exercise 07: Some o valor total de desconto aplicado em todos os itens de pedidos.
+SELECT SUM(sod.UnitPriceDiscount) as Desconto_Preco_Total
+FROM SalesLT.SalesOrderDetail as sod
