@@ -40,3 +40,9 @@ SELECT SUM(sod.LineTotal) as Total_Venda, pc.[Name] as Nome_Categoria
 FROM SalesLT.[Product] as p INNER JOIN SalesLT.SalesOrderDetail as sod ON p.ProductID = sod.ProductID
      INNER JOIN SalesLT.ProductCategory as pc ON p.ProductCategoryID = pc.ProductCategoryID
 GROUP BY pc.[Name]
+
+-- Exercise 08: Some o valor total de vendas por ano, ordenando do maior para o menor.
+SELECT SUM(sod.LineTotal) as Total_Vendas, YEAR(soh.OrderDate) as Ano_Venda
+FROM SalesLT.SalesOrderDetail as sod INNER JOIN SalesLT.SalesOrderHeader as soh ON sod.SalesOrderID = soh.SalesOrderID
+GROUP BY soh.OrderDate
+ORDER BY soh.OrderDate DESC
